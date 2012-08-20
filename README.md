@@ -167,7 +167,7 @@ You can also flush your cache via the Varnish command line [varnishadm](https://
 
 Important notes
 ===============
- - I wrote this extension on Magento 1.6.1.0 and **did not** test it on any other version.
+ - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system.
  - I tried to minimize as **much** as I could *Core Overrides*. 
 
  Core overrides are a huge pain for developpers and should be avoided: they cause conflicts, make the code hard to maintain and debug. 
