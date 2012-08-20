@@ -105,25 +105,25 @@
     <customer_logged_out>
     </customer_logged_out>
 
-    <customer_account_login translate="label">
+    <customer_account_login>
     </customer_account_login>
 
-    <customer_account_logoutsuccess translate="label">
+    <customer_account_logoutsuccess>
     </customer_account_logoutsuccess>
 
-    <customer_account_create translate="label">
+    <customer_account_create>
     </customer_account_create>
 
-    <customer_account_forgotpassword translate="label">
+    <customer_account_forgotpassword>
     </customer_account_forgotpassword>
 
-    <customer_account_resetpassword translate="label">
+    <customer_account_resetpassword>
     </customer_account_resetpassword>
 
     <customer_account_confirmation>
     </customer_account_confirmation>
 
-    <customer_account_edit translate="label">
+    <customer_account_edit>
         <action method="setEsi">
             <params>
                 <cache_type>per-client</cache_type>
@@ -131,7 +131,7 @@
         </action>
     </customer_account_edit>
 
-    <customer_account_index translate="label">
+    <customer_account_index>
         <reference name="customer_account_dashboard">
             <action method="setEsi">
                 <params>
@@ -141,11 +141,11 @@
         </reference>
     </customer_account_index>
 
-    <customer_address_index translate="label">
+    <customer_address_index>
         <varnish_do_not_cache></varnish_do_not_cache>
     </customer_address_index>
 
-    <customer_address_form translate="label">
+    <customer_address_form>
         <reference name="customer_address_edit">
             <action method="setEsi">
                 <params>
