@@ -59,7 +59,7 @@ Let's keep going:
 
 8. Connect to your Magento administration area (most likely to be `http://yourhost/admin`)
 9. Go in System->Cache Management and **disable** every cache
-10. Go in System->Configuration->General->Varnish and set "Enable Varnish Module" to *yes* and click save
+10. Go in System->Configuration->General->Varnish->Module Activation and set "Enable Varnish Module" to *yes* and click save
 	
 	**note**: Once you set this to *yes* and save, you will certainly notice that "Enable Varnish Module" stayed set to *no*. That's normal! Don't spend hours trying to set it to yes, just go on to the next step.
 11. Go back in System->Cache Management and click the "Flush Cache Storage" button.

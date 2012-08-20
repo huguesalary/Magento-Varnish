@@ -6,7 +6,6 @@
  * @copyright  	2012
  * @license		GNU General Public License, version 3 (GPL-3.0)
  */
-
 class Betabrand_Varnish_Model_Observer
 {
 	// Array containing values to be used to calculate a hash
@@ -46,11 +45,11 @@ class Betabrand_Varnish_Model_Observer
 	public function injectEsi($eventObject)
 	{
 		//No ESI injection if the module is disabled or the request is made on HTTPS
-		if(!Mage::getStoreConfig('varnish/varnish/active') || Mage::app()->getRequest()->isSecure())
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled() || Mage::app()->getRequest()->isSecure())
 			return;
 		
 		$block = $eventObject->getBlock();
-
+		
 		if($block instanceof Mage_Core_Block_Template)
 		{
 			$esi = $block->getEsi();
@@ -116,15 +115,15 @@ class Betabrand_Varnish_Model_Observer
                 }
                 else if($src->getCacheType() === 'per-client')
                 {
-                    $src->setExpiry('10m');
+                    $src->setExpiry(Mage::getStoreConfig('varnish/cache/per_client_default_expiry'));
                 }
                 else if($src->getCacheType() === 'per-page')
                 {
-                    $src->setExpiry('3d');
+                    $src->setExpiry(Mage::getStoreConfig('varnish/cache/per_page_default_expiry'));
                 }
                 else
                 {
-                    $src->setExpiry('3d');
+                    $src->setExpiry(Mage::getStoreConfig('varnish/cache/global_default_expiry'));
                 }
 
                 //We create a unique fingerprint with all our values
@@ -195,7 +194,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banCustomerCache($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$ban = Mage::getSingleton('varnish/cache');
@@ -211,7 +210,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banAllCache($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$type = $eventObject->getType();
@@ -242,7 +241,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function preprareHttpResponse($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$response = $eventObject->getResponse();
@@ -266,7 +265,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banProductAfterSave($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$product = $eventObject->getProduct();
@@ -284,7 +283,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banCategoryAfterSave($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$category = $eventObject->getCategory();
@@ -305,7 +304,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banMediaCache($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$ban = Mage::getSingleton('varnish/cache');
@@ -322,7 +321,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banCatalogImagesCache($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$ban = Mage::getSingleton('varnish/cache');
@@ -339,7 +338,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banCmsPageAfterSave($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$ban = Mage::getSingleton('varnish/cache');
@@ -367,7 +366,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function checkHandleCachingCondition($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$layout = $eventObject->getLayout();
@@ -383,7 +382,7 @@ class Betabrand_Varnish_Model_Observer
 	
 	public function banCustomerMessagesCache($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$ban = Mage::getSingleton('varnish/cache');
@@ -392,7 +391,7 @@ class Betabrand_Varnish_Model_Observer
 	
 	public function addFlushButton($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		$block = $eventObject->getBlock();
@@ -417,7 +416,7 @@ class Betabrand_Varnish_Model_Observer
 	 */
 	public function banProductPageOutOfStock($eventObject)
 	{
-		if(!Mage::getStoreConfig('varnish/varnish/active'))
+		if(!Mage::helper('varnish')->isVarnishModuleEnabled())
 			return;
 		
 		/**

@@ -17,11 +17,24 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <varnish>
-                    <label>Varnish Cache Configuration</label>
+                    <label>Module Activation</label>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        You should <b>not</b> disable the module without removing the Varnish server or explicitly do a
+                        <code>return (pass);</code> in your <code>sub vcl_recv()</code> ! <br />
+                        If you disable Varnish, the module will be completely inactive. This means that the ESI
+                        injection won't happen anymore. <br />
+                        Disabling the Varnish module, is different from disabling the varnish "Cache" in
+                        Configuration->Cache Management.<br />
+                        Disabling the Magento Module ONLY disables the Magento Module.<br />
+                        This means that if you still have a Varnish server in front of Magento,
+                        the Varnish server will still intercept the request and do what the VCL file says!
+                        ]]>
+                    </comment>
                     <fields>
                     	<active translate="label">
                             <label>Enable Varnish Module</label>
@@ -32,18 +45,126 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>
-                            		You should NOT disable the module without removing the Varnish server or explicitly do a "return (pass);" in your "sub vcl_recv()"!
-                            		If you disable Varnish, the module will be completely inactive. 
-                            		This means that the ESI injection won't happen anymore. 
-                            		Disabling the Varnish module, is different from disabling the varnish "Cache" in Configuration->Cache Management. 
-                            		Disabling the Magento Module ONLY disables the Magento Module. 
-                            		This means that if you still have a Varnish server in front of Magento, 
-                            		the Varnish server will still intercept the request and do what the VCL file says!
-                           </comment>
                         </active>
                     </fields>
                 </varnish>
+                <redis>
+                    <label>Redis Server Configuration</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        Redis is used to store data related to the "per-page" cached blocks and the Mage::registry() keys
+                    </comment>
+                    <fields>
+                        <host translate="label">
+                            <label>Redis Server Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                               The redis server address as a hostname or an ip address. e.g. "localhost" or "127.0.0.1" (default: localhost)
+                            </comment>
+                        </host>
+                        <port translate="label">
+                            <label>Redis Server Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The redis server port (default: 6379)
+                            </comment>
+                        </port>
+                        <database translate="label">
+                            <label>Redis Server Database Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The number identifying the redis database you want this extension to use (default: 15)
+                            </comment>
+                        </database>
+                    </fields>
+                </redis>
+                <cache>
+                    <label>Cache Configuration</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <global_default_expiry translate="label">
+                            <label>Global Default Expiry</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[
+                                The default duration after which a global cached object in Varnish will expire if no "Expiry"
+                                has been set in the layout.<br/>
+
+                                Duration expressed like: <br/>
+                                    1d (one day) <br/>
+                                    3600s (3600 seconds) <br/>
+                                    1w (1 week) <br/>
+
+                                <b>Default is 3d (3 days)</b>
+                                ]]>
+                            </comment>
+                        </global_default_expiry>
+                        <per_page_default_expiry translate="label">
+                            <label>Per-Page Default Expiry</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[
+                                The default duration after which a per-page cached object in Varnish will expire if no "Expiry"
+                                has been set in the layout <br/>
+
+                                Duration expressed like:<br/>
+                                    1d (one day) <br/>
+                                    3600s (3600 seconds) <br/>
+                                    1w (1 week) <br/>
+
+                                <b>Default is 3d (3 days)</b>
+                                ]]>
+                            </comment>
+                        </per_page_default_expiry>
+                        <per_client_default_expiry translate="label">
+                            <label>Per-Client Default Expiry</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[
+                                The default duration after which a per-client cached object in Varnish will expire if no "Expiry"
+                                has been set in the layout
+
+                                Duration expressed like: <br/>
+                                    1d (one day) <br/>
+                                    3600s (3600 seconds) <br/>
+                                    1w (1 week) <br/>
+
+                                <b>Default is 10m (10 minutes)</b>
+                                ]]>
+                            </comment>
+                        </per_client_default_expiry>
+                    </fields>
+                </cache>
             </groups>
         </varnish>
     </sections>

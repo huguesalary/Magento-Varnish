@@ -255,6 +255,16 @@
 			<varnish>
 				<active>0</active>
 			</varnish>
+            <redis>
+                <host>localhost</host>
+                <port>6379</port>
+                <database>15</database>
+            </redis>
+            <cache>
+                <global_default_expiry>3d</global_default_expiry>
+                <per_page_default_expiry>3d</per_page_default_expiry>
+                <per_client_default_expiry>10m</per_client_default_expiry>
+            </cache>
 		</varnish>
     </default>
 </config>
