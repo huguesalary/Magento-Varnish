@@ -218,10 +218,8 @@ sub vcl_fetch{
 	set beresp.http.X-Varnish-Cacheable = "YES: Cacheable";
 	set beresp.http.X-Varnish-Fpc = "Removed cookie in vcl_fetch";
 	
-	# For every static files we set a Max-Age to 1 Week in the future, but not for modelcitizen pictures
-	# The reason we exclude MC pictures is because the when browser caches the photo when uploading, BEFORE B-Glasses.
-	# When a customer applies B-Glasses the customer has to refresh the page otherwise it's the image without b-glasses that shows up
-	if((req.url ~ "^[^?]*\.(css|js|htc|xml|txt|swf|flv|pdf|gif|jpe?g|png|ico)$" || req.url ~ "all/proxy/get/url/") && req.url !~ "/media/modelcitizen/")
+	# For every static files we set a Max-Age to 1 Week in the future
+	if(req.url ~ "^[^?]*\.(css|js|htc|xml|txt|swf|flv|pdf|gif|jpe?g|png|ico)$")
 	{
 		if(req.url ~ "/media/catalog/")
 		{

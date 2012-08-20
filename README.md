@@ -193,6 +193,10 @@ Apologies
 ==========
 I apologize to Shakespeare for any typos, grammatical errors or bad syntax you may have encountered in this document.
 
+Contact
+=======
+Don't hesitate to contact me by email at hugues.alary@gmail.com and send me your suggestions or whatever goes through your mind
+
 LICENSE
 =======
     This program is free software: you can redistribute it and/or modify
