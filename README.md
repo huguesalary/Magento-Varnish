@@ -178,11 +178,9 @@ Important notes
 
 TODO
 ====
-- Remove hard-coded default expiry times and move them to the system configuration. (see `Betabrand_Varnish_Model_Observer::injectEsi()`)
-- Remove hard-coded redis configuration and move it to the system configuration. (see `Betabrand_Varnish_Helper_Data::getRedisCache()`)
 - Remove some other dirty lines of code
 - Translate and use $this->__("")
-- Finish coding/debugging the Cache Management area allowing to flush "per-page" cached block.
+- Finish coding/debugging the Cache Management area allowing to flush "per-page" cached block. With the current implementation when there's a lot of "per-page" block, the page takes for ever to load.
 - Once the previous item is done, allow to flush "global" blocks as well
 - Allow more system configuration in general (like enable/disable cache refresh on save, or on out of stock)
 - Correct every typos in comments and doc
