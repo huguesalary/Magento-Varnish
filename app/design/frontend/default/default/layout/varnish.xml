@@ -45,7 +45,7 @@
 		</reference>
 	</default>
 
-<!-- Checkout -->
+    <!-- Checkout -->
 
     <!-- We cache the checkout cart page on a per-client basis -->
 	<checkout_cart_index>
@@ -91,6 +91,84 @@
         <varnish_do_not_cache></varnish_do_not_cache>
     </checkout_onepage_failure>
     
- <!-- End Checkout -->
-	
+    <!-- End Checkout -->
+
+    <!-- Customer Account -->
+
+    <customer_account>
+        <varnish_do_not_cache></varnish_do_not_cache>
+    </customer_account>
+
+    <customer_logged_in>
+    </customer_logged_in>
+
+    <customer_logged_out>
+    </customer_logged_out>
+
+    <customer_account_login translate="label">
+    </customer_account_login>
+
+    <customer_account_logoutsuccess translate="label">
+    </customer_account_logoutsuccess>
+
+    <customer_account_create translate="label">
+    </customer_account_create>
+
+    <customer_account_forgotpassword translate="label">
+    </customer_account_forgotpassword>
+
+    <customer_account_resetpassword translate="label">
+    </customer_account_resetpassword>
+
+    <customer_account_confirmation>
+    </customer_account_confirmation>
+
+    <customer_account_edit translate="label">
+        <action method="setEsi">
+            <params>
+                <cache_type>per-client</cache_type>
+            </params>
+        </action>
+    </customer_account_edit>
+
+    <customer_account_index translate="label">
+        <reference name="customer_account_dashboard">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+    </customer_account_index>
+
+    <customer_address_index translate="label">
+        <varnish_do_not_cache></varnish_do_not_cache>
+    </customer_address_index>
+
+    <customer_address_form translate="label">
+        <reference name="customer_address_edit">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+    </customer_address_form>
+
+    <!-- End Customer Account -->
+
+    <!-- Sales -->
+
+    <sales_order_history>
+        <reference name="sales.order.history">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+    </sales_order_history>
+
+    <!-- End Sales -->
+
 </layout>
