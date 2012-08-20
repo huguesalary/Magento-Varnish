@@ -176,6 +176,19 @@ Important notes
 
  - Finally, this extension is still in development and by no mean can it be considered stable. However, it is stable enough to be released and any help to make it better is welcome! Feel free to send pull requests, bug fixes and feature requests!
 
+Known bugs
+==========
+
+ - In the Customer Accounts, when you click on "My Orders" the caching policy applied to the "sales.order.history" block generates an exception: `Fatal error: Call to a member function setHeaderTitle() on a non-object in /app/code/core/Mage/Sales/Block/Order/History.php on line 52`
+
+ If you want to fix this bug, either you have to remove the caching policy, or, you need to override Mage_Sales_Block_Order_History and comment out line 52.
+ It's ugly, but not my fault!
+
+ - The same type of bug occurs on the Account Dashboard when you uncomment the caching policy applied on "customer_account_dashboard". In order not to scare people away from the extension by facing almost immediately an exception, I commented out the caching policy.
+
+ If you want to uncomment the caching policy, you'll have to override Mage_Customer_Block_Form_Register and comment out line 43.
+ Again, it's ugly, but not my fault!
+
 TODO
 ====
 - Remove some other dirty lines of code

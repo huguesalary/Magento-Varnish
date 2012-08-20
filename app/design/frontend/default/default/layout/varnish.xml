@@ -132,7 +132,51 @@
     </customer_account_edit>
 
     <customer_account_index>
+        <!--
+        Due to "stupid line 43" in Mage_Customer_Block_Form_Register we can't do a setEsi on the entire
+        customer_account_dashboard so we do it for every single sub-blocks
+        If you want, you can override Mage_Customer_Block_Form_Register and comment line 43. Then you'll be able to
+        uncomment the 7 lines below.
+        -->
+        <!--
         <reference name="customer_account_dashboard">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+        -->
+
+        <reference type="customer/account_dashboard_hello">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+        <reference name="customer_account_dashboard_newsletter">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+        <reference name="customer_account_dashboard_address" >
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+        <reference name="customer_account_dashboard_info1">
+            <action method="setEsi">
+                <params>
+                    <cache_type>per-client</cache_type>
+                </params>
+            </action>
+        </reference>
+        <reference name="customer_account_dashboard_info2" >
             <action method="setEsi">
                 <params>
                     <cache_type>per-client</cache_type>
