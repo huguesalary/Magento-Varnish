@@ -179,7 +179,8 @@ Important notes
 Known bugs
 ==========
 
- - In the Customer Accounts, when you click on "My Orders" the caching policy applied to the "sales.order.history" block generates an exception: `Fatal error: Call to a member function setHeaderTitle() on a non-object in /app/code/core/Mage/Sales/Block/Order/History.php on line 52`
+ - In the Customer Accounts, when you click on "My Orders" the caching policy applied to the "sales.order.history" block generates an exception: 
+ `Fatal error: Call to a member function setHeaderTitle() on a non-object in /app/code/core/Mage/Sales/Block/Order/History.php on line 52`
 
  If you want to fix this bug, either you have to remove the caching policy, or, you need to override Mage_Sales_Block_Order_History and comment out line 52.
  It's ugly, but not my fault!
