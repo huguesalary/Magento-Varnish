@@ -64,14 +64,6 @@ Let's keep going:
 	**note**: Once you set this to *yes* and save, you will certainly notice that "Enable Varnish Module" stayed set to *no*. That's normal! Don't spend hours trying to set it to yes, just go on to the next step.
 11. Go back in System->Cache Management and click the "Flush Cache Storage" button.
 
-Important note about Redis server configuration
-===============================================
-
-In order for the extension to work, your redis server **must** be listening on port **6379** and **must** have **database 15** available. It also needs to be installed on the same server where Magento is installed.
-
-I know, bummer. Soon, I will remove the hard-coded values from the code and you'll be able to specify your own redis configuration in the Magento system configuration.
-
-
 Caching Policies - How to define what's cached and what's not?
 ==============================================================
 
