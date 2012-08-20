@@ -95,7 +95,7 @@ Open the frontend varnish.xml layout file. Line 12 you can read:
         <reference name="cart_sidebar">
 			<action method="setEsi">
             	<params>
-            		<cache_type>*per-client*</cache_type>
+            		<cache_type>per-client</cache_type>
             	</params>
             </action>
 		</reference>
