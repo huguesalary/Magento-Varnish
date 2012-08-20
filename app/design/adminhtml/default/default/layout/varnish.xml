@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+ Magento Varnish Module
+ @author     	Hugues Alary <hugues.alary@gmail.com>
+ @copyright  	2012
+ @license		GNU General Public License, version 3 (GPL-3.0)
+ -->
+<layout version="0.1.0">
+
+    <adminhtml_cache_index>
+        <reference name="content">
+            <block type="varnish/adminhtml_cache_perpage" name="cache.perpage" before="cache.additional" />
+            <!-- Later use maybe -->
+            <!--<block type="varnish/adminhtml_cache_varnish" name="cache.varnish" before="cache.additional" />-->
+        </reference>
+    </adminhtml_cache_index>
+	
+	<!-- We do not cache anything in the admin, change this setting at your risks... -->
+	<default>
+		<!-- Seriously, do not change this... -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+	</default>
+	
+    <popup>
+    	<!-- Forget it! -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </popup>
+
+    <overlay_popup>
+    	<!-- You are on the road to perdition... -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </overlay_popup>
+
+    <editor>
+    	<!-- Better late than never... you can still undo what you did -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+	</editor>
+
+    <adminhtml_noroute>
+    	<!-- If you are an intern, be sure that you won't get a contract -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </adminhtml_noroute>
+
+    <adminhtml_denied>
+    	<!-- Why don't you listen to me?? -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </adminhtml_denied>
+
+    <preview>
+    	<!-- Well I guess it's too late now -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </preview>
+
+    <alert_preview>
+    	<!-- Don't file a bug report! -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </alert_preview>
+
+    <systemPreview>
+    	<!-- That is the mistake of your life! -->
+		<varnish_do_not_cache></varnish_do_not_cache>
+    </systemPreview>
+
+    <empty>
+    	<!-- Ok, so you actually found a solution. Please share it! -->
+    	<varnish_do_not_cache></varnish_do_not_cache>
+    </empty>
+
+</layout>

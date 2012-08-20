@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--  
+ Magento Varnish Module
+ @author     	Hugues Alary <hugues.alary@gmail.com>
+ @copyright  	2012
+ @license		GNU General Public License, version 3 (GPL-3.0)
+ -->
+<config>
+	<acl>
+		<resources>
+			<all>Allow Everything</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<varnish>
+										<title>Varnish Configuration</title>
+									</varnish>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

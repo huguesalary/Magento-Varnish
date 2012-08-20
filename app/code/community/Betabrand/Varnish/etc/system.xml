@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--  
+ Magento Varnish Module
+ @author     	Hugues Alary <hugues.alary@gmail.com>
+ @copyright  	2012
+ @license		GNU General Public License, version 3 (GPL-3.0)
+ -->
+<config>
+    <sections>
+        <varnish>
+        	<label>Varnish</label>
+        	<tab>general</tab>
+        	<frontend_type>text</frontend_type>
+            <sort_order>305</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <varnish>
+                    <label>Varnish Cache Configuration</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<active translate="label">
+                            <label>Enable Varnish Module</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>varnish/adminhtml_system_config_backend_cacherefresh</backend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                            		You should NOT disable the module without removing the Varnish server or explicitly do a "return (pass);" in your "sub vcl_recv()"!
+                            		If you disable Varnish, the module will be completely inactive. 
+                            		This means that the ESI injection won't happen anymore. 
+                            		Disabling the Varnish module, is different from disabling the varnish "Cache" in Configuration->Cache Management. 
+                            		Disabling the Magento Module ONLY disables the Magento Module. 
+                            		This means that if you still have a Varnish server in front of Magento, 
+                            		the Varnish server will still intercept the request and do what the VCL file says!
+                           </comment>
+                        </active>
+                    </fields>
+                </varnish>
+            </groups>
+        </varnish>
+    </sections>
+</config>
