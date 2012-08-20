@@ -178,7 +178,7 @@ Important notes
 
 TODO
 ====
-- Remove hard-coded default expiry times and moved them to the system configuration. (see `Betabrand_Varnish_Model_Observer::injectEsi()`)
+- Remove hard-coded default expiry times and move them to the system configuration. (see `Betabrand_Varnish_Model_Observer::injectEsi()`)
 - Remove hard-coded redis configuration and move it to the system configuration. (see `Betabrand_Varnish_Helper_Data::getRedisCache()`)
 - Remove some other dirty lines of code
 - Translate and use $this->__("")
