@@ -24,7 +24,7 @@ This extension is for you.
 Requirements
 ============
 
-- [Magento 1.6.0.1](http://www.magentocommerce.com/) (not tested with lower versions or above)
+- [Magento 1.6.1.0](http://www.magentocommerce.com/) (not tested with lower versions or above)
 - [Varnish >=3.0.2](https://www.varnish-cache.org/) 
 - [Redis](http://redis.io/)
 - [Cm\_Cache\_Backend\_Redis](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis) (Included in the extension)
