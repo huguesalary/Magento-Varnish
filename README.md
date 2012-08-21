@@ -171,6 +171,8 @@ The request will always go to a URL of the form 'varnish/cacheController/getBloc
 
 The `CacheController` receives the request and returns the actual HTML of the *block*.
 
+On the Varnish side, I wrote a specific configuration meant to work with this Magento extension.
+
 Important notes
 ===============
  - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system.
