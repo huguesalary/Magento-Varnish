@@ -90,7 +90,7 @@ class Betabrand_Varnish_Model_Observer
 				 * 
 				 * We default the cache type to "global"
 				 */
-				if(!isset($esi['cache_type'])) { $esi['cache_type'] = 'global'; }
+				if(empty($esi['cache_type'])) { $esi['cache_type'] = 'global'; }
 
                 $src->setCacheType($esi['cache_type']);
 
@@ -109,7 +109,7 @@ class Betabrand_Varnish_Model_Observer
                  * Expiry (or TTL in Varnish lingo). How lon will the object be stored in Varnish?
                  * TODO: make sure the expiry is in format 1d 24h 1140m 86400s
                  */
-                if(isset($esi['expiry']))
+                if(!empty($esi['expiry']))
                 {
                     $src->setExpiry($esi['expiry']);
                 }
