@@ -29,9 +29,10 @@ Table Of Content
 7. [Why redis?](#why-redis)
 8. [Known bugs](#known-bugs)
 9. [TODO](#todo)
-10. [Apologies](#apologies)
-11. [Contact](#contact)
-12. [License](#license)
+10. [Lectures](#lectures)
+11. [Apologies](#apologies)
+12. [Contact](#contact)
+13. [License](#license)
 
 Synopsis
 ========
@@ -282,6 +283,12 @@ TODO
 - Correct every typos in comments and doc
 - Complete the doc with some schema of the interaction between Varnish and Magento
 - Create an API to access this extension from other modules and Document this API
+
+Lectures
+========
+- About [Edge Server Includes (ESI)](https://www.varnish-cache.org/docs/3.0/tutorial/esi.html?highlight=esi)
+- About [Varnish](https://www.varnish-cache.org/docs/3.0/tutorial/introduction.html)
+- The [Varnish Book](https://www.varnish-software.com/static/book/)
 
 Apologies
 ==========
