@@ -101,7 +101,7 @@ Caching Policies - How to define what's cached and what's not?
 
 A *caching policy* defines what is stored in cache, how it is cached and how for long.
 
-A *caching policy* is defined on a *block* (`<block></block>`) or a *reference* (`<reference></reference>`). However, you can **only set** a policy on a *block* that extends from **Mage_Core_Block_Template**.
+A *caching policy* is defined on a *block* (`<block></block>`) or a *reference* (`<reference></reference>`). However, you can **only set** a policy on a *block* that extends from **Mage_Core_Block_Template**. On a given page, **different** *caching policies* can be applied to different *blocks*.
 
 By default, the extension caches **everything**. This means that each time a client visits a URL, the content of the page is put in cache and **every subsequent HTTP request to the same url** will be served the cached content.
 
