@@ -1,17 +1,17 @@
 Magento-Varnish
-===============
+---------------
 
 This Magento extension provides a *Real* **Full Page Caching** (FPC) for **Magento** powered by **Varnish** with support of **Session-Based** information caching (Cart, Customer Accounts, ...) via **ESI** includes
 
 Table Of Content
-================
+----------------
 
 1. [Synopsis](#synopsis)
 2. [Requirements](#requirements)
 3. [Step by Step installation](#step-by-step-installation)
 4. [Caching Policies - How to define what's cached and what's not?](#caching-policies---how-to-define-whats-cached-and-whats-not)
 	
-	4a. [Where do you define a caching policy?](#where-do-you-define-a-caching-policy?)
+	4a. [Where do you define a caching policy?](#where-do-you-define-a-caching-policy)
 
 	4b. [How to define a caching policy on a block](#how-to-define-a-caching-policy-on-a-block)
 	
@@ -35,7 +35,7 @@ Table Of Content
 13. [License](#license)
 
 Synopsis
-========
+--------
 
 Tired of fake Full Page Cache Magento extensions? Tired of these extensions promising to make your website fly, shooting to the stars, but barely reaching sea level?
 
@@ -54,7 +54,7 @@ This extension is for you.
 - Makes your website fly
 
 Requirements
-============
+------------
 
 - [Magento 1.6.1.0](http://www.magentocommerce.com/) (not tested with lower versions or above)
 - [Varnish >=3.0.2](https://www.varnish-cache.org/) 
@@ -65,7 +65,7 @@ Requirements
 - A bit of patience
 
 Step by Step installation
-=========================
+-------------------------
 
 1. [Install Varnish](https://www.varnish-cache.org/docs/3.0/installation/index.html) on your server
 2. [Install Redis](http://redis.io/download) on your server
@@ -97,7 +97,7 @@ Let's keep going:
 11. Go back in System->Cache Management and click the "Flush Cache Storage" button.
 
 Caching Policies - How to define what's cached and what's not?
-==============================================================
+--------------------------------------------------------------
 
 A *caching policy* defines what is stored in cache, how it is cached and how for long.
 
@@ -105,10 +105,10 @@ A *caching policy* is defined on a *block* (`<block></block>`) or a *reference* 
 
 By default, the extension caches **everything**. This means that each time a client visits a URL, the content of the page is put in cache and **every subsequent HTTP request to the same url** will be served the cached content.
 
-##Where do you define a caching policy?
+### Where do you define a caching policy?
 Your caching policies are defined via the Magento layout files, just like your `<block></block>`.
 
-##How to define a caching policy on a block
+### How to define a caching policy on a block
 It's easy!
 
 First, remember, by default, the extension caches **everything**. 
@@ -136,7 +136,7 @@ The caching policy for this block is defined in the `<params></params>` node. Th
 
 In this case, we only have one parameter called `<cache_type></cache_type>`. This parameters indicates to Magento which type of caching we want on the block. In this case, the type of caching is `per-client`. `per-client` means that we want Varnish to cache a **different** version of the `<block></block>` for **each** client. 
 
-##List of the different parameters defining a caching policy
+### List of the different parameters defining a caching policy
 
 Given the example above
 
@@ -175,9 +175,9 @@ If no expiry is set, by default it will be set to `3d` (3 days), or `10m` (10 mi
 		current_product
 		current_product, current_category
 
-##How to "flush" the cache
+### How to "flush" the cache
 
-###Flushing Varnish via Magento
+#### Flushing Varnish via Magento
 You can flush the "Varnish" cache by going in your Magento Admin in `System->Cache Management`.
 
 By selecting "Varnish" in the "Cache Storage Management" and hitting "Refresh" you will blow away the entire cache. You rarely need to do that.
@@ -186,11 +186,12 @@ If you need to refresh a product page, or a category, or a CMS page, just "Edit"
 
 When a product goes out of stock, its page is automatically refreshed.
 
-###Flushing Varnish cache via command line
+#### Flushing Varnish cache via command line
 You can also flush your cache via the Varnish command line [varnishadm](https://www.varnish-cache.org/docs/3.0/reference/varnishadm.html)
 
 How does the extension work basically?
-======================================
+--------------------------------------
+
 This extension works by adding an Event listener to `core_block_abstract_to_html_before`. This event is dispatched by Magento just before rendering the HTML for a block.
 
 When the extension intercepts the event, it checks if a *caching policy* has been defined on the *block* that is being rendered. If yes, the extension replaces the actual *template* file associated to the *block* with its own template `varnish/esi.phtml`. 
@@ -206,7 +207,8 @@ The `CacheController` receives the request and returns the actual HTML of the *b
 On the Varnish side, I wrote a specific configuration meant to work with this Magento extension.
 
 Important notes
-===============
+---------------
+
  - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system.
  - I tried to minimize as **much** as I could *Core Overrides*. 
 
@@ -225,7 +227,8 @@ Important notes
  - Finally, this extension is still in development and by no mean can it be considered stable. However, it is stable enough to be released and any help to make it better is welcome! Feel free to send pull requests, bug fixes and feature requests!
 
 Why Redis?
-==========
+----------
+
 Redis is used to get around the fact that there's no context persistency between request in PHP. Thus, redis is used to store datas needed by some ESI Includes.
 
 For example, when a caching policy specifies some `<registry_keys />` to keep, the content of these registry keys is stored in redis and retrieved by the ESI request.
@@ -261,7 +264,7 @@ Now, when I look at it, I see multiple problems with the current implementation 
 - Secondly, it should be left to the final user to decide how to store the data. Restricting to redis is not optimal.
 
 Known bugs
-==========
+----------
 
  - In the Customer Accounts, when you click on "My Orders" the caching policy applied to the "sales.order.history" block generates an exception: 
  `Fatal error: Call to a member function setHeaderTitle() on a non-object in /app/code/core/Mage/Sales/Block/Order/History.php on line 52`
@@ -275,7 +278,8 @@ Known bugs
  Again, it's ugly, but not my fault!
 
 TODO
-====
+----
+
 - Remove some other dirty lines of code
 - Translate and use $this->__("")
 - Finish coding/debugging the Cache Management area allowing to flush "per-page" cached block. With the current implementation when there's a lot of "per-page" block, the page takes for ever to load.
@@ -286,21 +290,25 @@ TODO
 - Create an API to access this extension from other modules and Document this API
 
 Lectures
-========
+--------
+
 - About [Edge Server Includes (ESI)](https://www.varnish-cache.org/docs/3.0/tutorial/esi.html?highlight=esi)
 - About [Varnish](https://www.varnish-cache.org/docs/3.0/tutorial/introduction.html)
 - The [Varnish Book](https://www.varnish-software.com/static/book/)
 
 Apologies
-==========
+---------
+
 I apologize to Shakespeare for any typos, grammatical errors or bad syntax you may have encountered in this document.
 
 Contact
-=======
+-------
+
 Don't hesitate to contact me by email at hugues.alary@gmail.com and send me your suggestions or whatever goes through your mind
 
 LICENSE
-=======
+-------
+
     This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
