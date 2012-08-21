@@ -218,7 +218,7 @@ Important notes
 
  - This extension comes with some default policies. You will certainly don't need to change them. You can find them in the varnish.xml layout file**s** (1 varnish.xml for the frontend area, and one varnish.xml for the admin area).
 
- - At the moment, this extension **does not** allow caching of any part of the Magento admin area. Trying to define a caching policie for a `<block></block>` defined in the admin layout will failed and throw an exception.
+ - At the moment, this extension **does not** allow caching of any part of the Magento admin area. Trying to define a caching policy for a `<block></block>` defined in the admin layout will failed and throw an exception.
 
  - Finally, this extension is still in development and by no mean can it be considered stable. However, it is stable enough to be released and any help to make it better is welcome! Feel free to send pull requests, bug fixes and feature requests!
 
