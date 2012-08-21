@@ -3,6 +3,36 @@ Magento-Varnish
 
 This Magento extension provides a *Real* **Full Page Caching** for **Magento** powered by **Varnish** with support of **Session-Based** information caching (Cart, Customer Accounts, ...) via **ESI** includes
 
+Table Of Content
+================
+
+1. [Synopsis](#Synopsis)
+2. [Requirements](#requirements)
+3. [Step by Step installation](#step-by-step-installation)
+4. [Caching Policies - How to define what's cached and what's not?](#caching-policies---how-to-define-whats-cached-and-whats-not)
+	
+	4a. [Where do you define a caching policy?](#where-do-you-define-a-caching-policy?)
+
+	4b. [How to define a caching policy on a block](#how-to-define-a-caching-policy-on-a-block)
+	
+	4c. [List of the different parameters defining a caching policy](#list-of-the-different-parameters-defining-a-caching-policy)
+	
+	4d. [How to "flush" the cache](#how-to-flush-the-cache)
+		
+	
+	   4d-1. [Flushing Varnish via Magento](#flushing-varnish-via-magento)
+		
+	   4d-2. [Flushing Varnish cache via command line](#flushing-varnish-cache-via-command-line)
+	   
+5. [How does the extension work basically?](#how-does-the-extension-work-basically)
+6. [Important notes](#important-notes)
+7. [Why redis?](#why-redis)
+8. [Known bugs](#known-bugs)
+9. [TODO](#todo)
+10. [Apologies](#apologies)
+11. [Contact](#contact)
+12. [License](#license)
+
 Synopsis
 ========
 
