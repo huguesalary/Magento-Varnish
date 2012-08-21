@@ -228,7 +228,7 @@ Why Redis?
 ==========
 Redis is used to get around the fact that there's no context persistency between request in PHP. Thus, redis is used to store datas needed by some ESI Includes.
 
-For example, when a caching policy specifies some `<registry_keys />` to keep, the content of these registry keys is stored in redis and retreive by the ESI request.
+For example, when a caching policy specifies some `<registry_keys />` to keep, the content of these registry keys is stored in redis and retrieved by the ESI request.
 
 Why not storing these in a database table?
 
