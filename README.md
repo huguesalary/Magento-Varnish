@@ -154,9 +154,9 @@ Given the example above
 
 `<cache_type />`: Can take **one** and **only one** of the following values
 
-		per-client: one version per-client is stored in cache
-		per-page: one version of a block is stored per URL of a page
-		global (the default):	one version of a block is stored for the entire website
+		per-client	: one version per client is stored in cache (the session cookie identifies which client gets which cached version of the block)
+		per-page	: one version of a block is stored per URL of a page (the url of the page determines which cached version of the block is served to the client)
+		global		: one version of a block is stored for the entire website (only one cached version of the block exist and it is served to every client)
 
 ***
 
@@ -166,7 +166,7 @@ Given the example above
 		3d (3 days)
 		3600s (3600 seconds)
 
-If no expiry is set, by default it will be set to 3d (3 days), or 10m (10 minutes) if the `cache_type` is *per-client*. (We set the *per-client* cache expiry to 10 minutes because it would not make sense to keep this data for 3 days).
+If no expiry is set, by default it will be set to `3d` (3 days), or `10m` (10 minutes) if the `cache_type` is *per-client*. (We set the *per-client* cache expiry to 10 minutes because it would not make sense to keep this data for 3 days).
 
 ***
 
