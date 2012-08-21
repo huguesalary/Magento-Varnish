@@ -6,7 +6,7 @@ This Magento extension provides a *Real* **Full Page Caching** for **Magento** p
 Table Of Content
 ================
 
-1. [Synopsis](#Synopsis)
+1. [Synopsis](#synopsis)
 2. [Requirements](#requirements)
 3. [Step by Step installation](#step-by-step-installation)
 4. [Caching Policies - How to define what's cached and what's not?](#caching-policies---how-to-define-whats-cached-and-whats-not)
