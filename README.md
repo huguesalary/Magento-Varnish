@@ -176,6 +176,42 @@ Important notes
 
  - Finally, this extension is still in development and by no mean can it be considered stable. However, it is stable enough to be released and any help to make it better is welcome! Feel free to send pull requests, bug fixes and feature requests!
 
+Why Redis?
+==========
+Redis is used to get around the fact that there's no context persistency between request in PHP. Thus, redis is used to store datas needed by some ESI Includes.
+
+For example, when a caching policy specifies some `<registry_keys />` to keep, the content of these registry keys is stored in redis and retreive by the ESI request.
+
+Why not storing these in a database table?
+
+My first iteration was using a database table. I decided that this solution was not optimal. However, a feature to develop would be the ability for one to choose his storage via adapters for Memached, MySQL, Redis, File, etc, just like the Magento cache system.
+
+Why not using the Magento Cache System, you idiot?
+
+Well, good question. First, this extension wasn't supposed to be open-sourced when I begun developping it, so nobody was supposed to see the mess. Then, I needed a system that would allow me to list all the ESI includes by cache\_type, block\_type and block\_name. As I said earlier, I first used a database table, but I found that solution to be too complicated and not optimal. I started looking at using the Magento Cache and use "tags" to be able to filter the data. However, I was using Memcached and it doesn't support tags, I could have used the filesystem, but I didn't want because of how slow it would have been. I decided to use redis as it solved all my problems: no database, no table to create and no SQL, no slow access, easy access of my data thanks to the tags.
+
+Now, when I look at it, I see multiple problems with the current implementation of the code:
+
+- First, I made the choice to store **everything about the cached block** in redis. Meaning that the loss of the information stored in redis is equivalent to the loss of an ESI Include.
+
+	As a matter of fact, when a caching policy is defined on a block, the code generate a unique URL for this block.
+
+	This URL is made unique via a "fingerprint" calculated by the `injectEsi()` function. 
+
+	All the data related to this block (name of the block in the layout, store\_id, design\_theme, design\_package) is then saved in cache with the fingerprint as key.
+
+	This fingerprint is then read by the "CacheController" and the data defining the block is pulled out of the cache. 
+
+	Now, if the redis cache is emptied, or the key (finrgerprint) evicted, next time the ESI request is made, the code will return nothing because it won't be able to retrieve the data from the cache. 
+
+	My first implementation was relying on parsing the URL. All the data needed to generate the HTML for an ESI request was available directly in the URL, and redis was used only to store `registry_keys`. 
+
+	I moved away from this because the URL were becoming very long and the code hard to read, but I didn't think about the consequences of the lost of data in redis.
+	
+	I may move back to my previous iteration.
+
+- Secondly, it should be left to the final user to decide how to store the data. Restricting to redis is not optimal.
+
 Known bugs
 ==========
 
