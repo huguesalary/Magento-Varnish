@@ -1,7 +1,7 @@
 Magento-Varnish
 ===============
 
-This Magento extension provides a *Real* **Full Page Caching** for **Magento** powered by **Varnish** with support of **Session-Based** information caching (Cart, Customer Accounts, ...) via **ESI** includes
+This Magento extension provides a *Real* **Full Page Caching** (FPC) for **Magento** powered by **Varnish** with support of **Session-Based** information caching (Cart, Customer Accounts, ...) via **ESI** includes
 
 Table Of Content
 ================
