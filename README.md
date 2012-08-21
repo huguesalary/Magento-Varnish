@@ -45,6 +45,7 @@ This extension is for you.
 
 - Fully Caches your pages
 - Fully Caches pages with session based content (for example, your customer cart) thanks to **ESI includes**
+- Allows **different caching rules** for different *blocks* in the same page (you can have a block expiring after 10 minutes, another block expiring after 3 days, another after 15 seconds, and so on) thanks to **ESI Includes**
 - Automatically refreshes session based pages when needed (for example, your customer adding an item to its cart)
 - Refreshes product page cache on product save
 - Refreshes category page cache on category save
