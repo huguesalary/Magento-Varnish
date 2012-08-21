@@ -157,6 +157,20 @@ When a product goes out of stock, its page is automatically refreshed.
 ###Flushing Varnish cache via command line
 You can also flush your cache via the Varnish command line [varnishadm](https://www.varnish-cache.org/docs/3.0/reference/varnishadm.html)
 
+How does the extension work basically?
+======================================
+This extension works by adding an Event listener to `core_block_abstract_to_html_before`. This event is dispatched by Magento just before rendering the HTML for a block.
+
+When the extension intercepts the event, it checks if a *caching policy* has been defined on the *block* that is being rendered. If yes, the extension replaces the actual *template* file associated to the *block* with its own template `varnish/esi.phtml`. 
+
+This template renders only one HTML line `<!--esi <esi:include src="<?php echo $this->getSrc()->getUrl() ?>" /> -->`. 
+
+This *ESI include* is then detected by Varnish which will make an HTTP request to the URL defined in the `src` attribute of the `esi:include`.
+
+The request will always go to a URL of the form 'varnish/cacheController/getBlock/cacheType/xxx/expiry/xxx/fingerprint/xxx'.
+
+The `CacheController` receives the request and returns the actual HTML of the *block*.
+
 Important notes
 ===============
  - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system.
