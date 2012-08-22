@@ -209,6 +209,7 @@ On the Varnish side, I wrote a specific configuration meant to work with this Ma
 Important notes
 ---------------
 
+ - You should consider this extension as a **beta, not suitable for production use**
  - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system.
  - I tried to minimize as **much** as I could *Core Overrides*. 
 
