@@ -25,7 +25,7 @@ class Betabrand_Varnish_Block_Adminhtml_Cache_Perpage_Grid extends Mage_Adminhtm
         $this->_pagerVisibility  = false;
     }
 
-    protected function _sortCollectionBy($fieldToSort,$direction)
+    protected function _sortCollectionBy($fieldToSort,$direction="asc")
     {
         global $field;
         $field = $fieldToSort;
