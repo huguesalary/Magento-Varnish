@@ -71,11 +71,12 @@ Step by Step installation
 2. [Install Redis](http://redis.io/download) on your server
 3. [Install phpredis](https://github.com/nicolasff/phpredis#installingconfiguring) on... your server, you got it.
 4. Configure your webserver to listen on port **8080**. If you can't use this port, you'll have to make some changes in our configuration. We'll get to that later.
-5. Clone this repository and copy and paste the app/ and lib/ directory into your Magento installation
+5. Connect on your Magento admin area and **disable** all caches in the "Cache Management". This Step is very important.
+6. Clone this repository and copy and paste the app/ and lib/ directory into your Magento installation
 	
 	**note**: this extension overrides `Varien_Cache_Core` and `Credis_Client` by creating a file in `app/code/local/Varien/Cache/Core.php` and `app/code/local/Credis/Client.php`. Read more about these *Core Overrides* in the *Important Notes* section at the end of this document.
 
-6. Configure Varnish to use the configuration file provided with the extension. You will find this file in your Magento directory in `app/code/local/Betabrand/Varnish/vcl/magento.vcl`
+7. Configure Varnish to use the configuration file provided with the extension. You will find this file in your Magento directory in `app/code/local/Betabrand/Varnish/vcl/magento.vcl`
 
 	6b. If your webserver is **not** configured to listen on port 8080, modify the magento.vcl, line 76. Replace `.port = "8080"` by your port.
 
