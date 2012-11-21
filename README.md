@@ -56,7 +56,7 @@ This extension is for you.
 Requirements
 ------------
 
-- [Magento 1.6.1.0](http://www.magentocommerce.com/) (not tested with lower versions or above)
+- [Magento 1.6.1.0](http://www.magentocommerce.com/) (some users reported versions 1.5.1.0 - 1.6.2.0 - 1.7.0.2 to be working)
 - [Varnish >=3.0.2](https://www.varnish-cache.org/) 
 - [Redis](http://redis.io/)
 - [Cm\_Cache\_Backend\_Redis](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis) (Included in the extension)
@@ -211,7 +211,7 @@ Important notes
 ---------------
 
  - You should consider this extension as a **beta, not suitable for production use**
- - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system. 1 user reported me it works for Magento 1.5.1.0.
+ - I wrote this extension on Magento 1.6.1.0, with only **one** store, and **did not** test it on any other version, nor on a **multistore** system. some users reported versions 1.5.1.0 - 1.6.2.0 - 1.7.0.2 to be working.
  - I tried to minimize as **much** as I could *Core Overrides*. 
 
  Core overrides are a huge pain for developpers and should be avoided: they cause conflicts, make the code hard to maintain and debug. 
