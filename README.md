@@ -76,7 +76,7 @@ Step by Step installation
 	
 	**note**: this extension overrides `Varien_Cache_Core` and `Credis_Client` by creating a file in `app/code/local/Varien/Cache/Core.php` and `app/code/local/Credis/Client.php`. Read more about these *Core Overrides* in the *Important Notes* section at the end of this document.
 
-7. Configure Varnish to use the configuration file provided with the extension. You will find this file in your Magento directory in `app/code/local/Betabrand/Varnish/vcl/magento.vcl`
+7. Configure Varnish to use the configuration file provided with the extension. You will find this file in your Magento directory in `app/code/community/Betabrand/Varnish/vcl/magento.vcl`
 
 	6b. If your webserver is **not** configured to listen on port 8080, modify the magento.vcl, line 76. Replace `.port = "8080"` by your port.
 
